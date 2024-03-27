@@ -1,18 +1,35 @@
 package org.dingus;
 
-import 
+import java.awt.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class FileReading {
-    try {
-        File myObj = new File("filename.txt");
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            System.out.println(data);
+
+    public String pickDirectory(){
+        String selectedFilePath = "";
+        FileDialog filePicker = new FileDialog((Frame) null);
+
+        while (selectedFilePath.isEmpty() || !selectedFilePath.contains("txt")){
+            filePicker.setVisible(true);
+            if (filePicker.getFile() != null) {
+                selectedFilePath = filePicker.getDirectory() + filePicker.getFile();
+            }
         }
-        myReader.close();
-    } catch (FileNotFoundException e) {
-        System.out.println("An error occurred.");
-        e.printStackTrace();
+        return selectedFilePath;
     }
+
+    public String readFile(String path) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(path));
+        while(sc.hasNextLine()){
+            System.out.println(sc.nextLine());
+        }
+
+        return "a";
+
+    }
+
+
 }
