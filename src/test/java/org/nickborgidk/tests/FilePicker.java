@@ -1,33 +1,28 @@
-package org.nickborgidk;
+package org.nickborgidk.tests;
+
+import org.nickborgidk.main.FileReading;
 
 import java.awt.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileReading {
-
+public class FilePicker {
     public Scanner pickDirectory() throws FileNotFoundException {
         /*Creates a new file picker frame and only accepts a .txt, it then returns a Scanner object with the directory of the file */
         String selectedFilePath = "";
         FileDialog filePicker = new FileDialog((Frame) null);
+        filePicker.setTitle("Please select a key file with the .txt extension");
 
-        while (!selectedFilePath.contains("txt")){ //repeats until .txt extension is found
+        while (true){ //repeats until .txt extension is found in the end of selectedFilePath
             filePicker.setVisible(true);
             if (filePicker.getFile() != null) {
                 selectedFilePath = filePicker.getDirectory() + filePicker.getFile();
             }
-        }
-        return new Scanner(new File(selectedFilePath));
-    }
 
-    public String readFile(Scanner sc) throws FileNotFoundException {
-        /*Scans each line and appends it to a string, it is then returned*/
-        String fileData = "";
-        while(sc.hasNextLine()){
-            fileData += sc.nextLine();
+            if (FileReading.validateFile(selectedFilePath)){
+                return new Scanner(new File(selectedFilePath));
+            }
         }
-        return fileData;
     }
 }

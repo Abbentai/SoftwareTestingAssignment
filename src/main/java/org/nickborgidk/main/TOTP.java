@@ -1,4 +1,4 @@
-package org.nickborgidk;
+package org.nickborgidk.main;
 
 import com.bastiaanjansen.otp.HMACAlgorithm;
 import com.bastiaanjansen.otp.TOTPGenerator;
@@ -43,11 +43,7 @@ public class TOTP {
 
     public String GenerateCode(TOTPGenerator totp, int offset, long timeDifference){
         /*Generates the code, removes any difference in time and converts it to seconds*/
-        try {
-            return totp.at((System.currentTimeMillis() - timeDifference) / 1000 + offset);
-        } catch (IllegalStateException e) {
-            return ("Generation Failed");
-        }
+        return totp.at((System.currentTimeMillis() - timeDifference) / 1000 + offset);
     }
 }
 

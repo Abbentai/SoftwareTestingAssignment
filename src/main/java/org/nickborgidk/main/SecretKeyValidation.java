@@ -1,4 +1,4 @@
-package org.nickborgidk;
+package org.nickborgidk.main;
 
 import java.util.regex.Pattern;
 public class SecretKeyValidation {
