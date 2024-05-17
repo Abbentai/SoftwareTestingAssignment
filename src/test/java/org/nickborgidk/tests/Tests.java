@@ -7,7 +7,6 @@ import org.nickborgidk.main.SecretKeyValidation;
 import org.nickborgidk.main.FileReading;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.security.InvalidKeyException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -41,7 +40,7 @@ public class Tests {
 
     @Test
     void validKey(){
-        assertEquals("helloTHERE123", validation.validate("helloTHERE123"), "standard key string");
+        assertEquals("helloTHERE123456", validation.validate("helloTHERE123456"), "standard key string");
     }
 
     @Test

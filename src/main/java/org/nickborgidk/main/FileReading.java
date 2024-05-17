@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 public class FileReading {
     static Pattern fileRegex = Pattern.compile(".txt$", Pattern.CASE_INSENSITIVE);
 
-
-
     public static boolean validateFile(String filePath){
         if (fileRegex.matcher(filePath).find()){
             return true;

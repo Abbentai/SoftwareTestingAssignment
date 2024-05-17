@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 public class TOTP {
     Clock clock = Clock.systemDefaultZone();
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); //maybe add seconds here
+
     public void ThreeCodes(byte[] key, int offset) throws InvalidKeyException {
         /*Calls to generate 3 codes, the current code of the method being called, along with 2 codes for +-offset*/
         System.out.println("Past Code is: " + TotpBuilder(key, -offset, 0));
