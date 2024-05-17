@@ -24,7 +24,7 @@ public class Main {
 
         fileContents = validation.validate(fileContents);
 
-        byte[] key = fileContents.getBytes(StandardCharsets.UTF_8);;
+        byte[] key = fileContents.getBytes(StandardCharsets.UTF_8);
         totp.ThreeCodes(key, 30);
         LocalDateTime date = LocalDateTime.parse("2023-12-25 07:00:00", totp.formatter);
         System.out.println("The TOTP Code for Date " + date.format(totp.formatter) + " is: " + totp.CodeAtDate(key, date));
